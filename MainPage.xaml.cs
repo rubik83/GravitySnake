@@ -17,6 +17,7 @@ public partial class MainPage : ContentPage
             Accelerometer.Default.ReadingChanged += Accelerometer_ReadingChanged;
         }
         InitializeComponent();
+        DeviceDisplay.KeepScreenOn = true;
 
         var ts = TimeSpan.FromMilliseconds(20);
         Dispatcher.StartTimer(ts, TimerLoop);
