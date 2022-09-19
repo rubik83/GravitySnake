@@ -8,6 +8,8 @@ internal sealed class Program
     private readonly SizeI _board;
     private Apple _apple;
     private readonly Snake _snake;
+    private DateTime _last_move = DateTime.Now;
+    const double PX_BY_S = 20.0;
 
     public Program(SizeI board)
     {
@@ -19,9 +21,14 @@ internal sealed class Program
     public bool Update(float AccX, float AccY)
     {
         var direction = DirectionFromAcc(AccX, AccY);
-        if (!_snake.Next(_board, ref _apple, direction))
+
+        if (DateTime.Now.Subtract(_last_move).TotalSeconds * PX_BY_S > 1.0)
         {
-            return false;
+            _last_move = DateTime.Now;
+            if (!_snake.Next(_board, ref _apple, direction))
+            {
+                return false;
+            }
         }
 
         return true;
