@@ -18,7 +18,7 @@ public partial class MainPage : ContentPage
         }
         InitializeComponent();
 
-        var ts = TimeSpan.FromMilliseconds(100);
+        var ts = TimeSpan.FromMilliseconds(20);
         Dispatcher.StartTimer(ts, TimerLoop);
     }
     private bool TimerLoop()
