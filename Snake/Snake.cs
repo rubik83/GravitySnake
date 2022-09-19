@@ -31,7 +31,7 @@ internal sealed class Snake
 
         _coords.AddLast(head);
 
-        if (_coords.Last() == apple.Position)
+        if (_coords.Last().Near(apple.Position))
         {
             Size += 3 * apple.Size;
             apple = new Apple(board, _coords);

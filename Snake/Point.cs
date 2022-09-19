@@ -45,6 +45,12 @@ internal static class PointExtents
         }
     }
 
+    public static bool Near(in this PointI point, in PointI other)
+    {
+        var result = new SizeI(point) - new SizeI(other);
+        return ((Math.Abs(result.Width) < 6) && (Math.Abs(result.Height) < 6));
+    }
+
     /// <summary>
     /// Wraps each dimension beyond a maximum or under <c>0</c>
     /// </summary>
