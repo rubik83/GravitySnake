@@ -6,7 +6,8 @@ public partial class MainPage : ContentPage
     private void Accelerometer_ReadingChanged(object sender, AccelerometerChangedEventArgs e)
     {
         var drawable = (GraphicsDrawable)gv.Drawable;
-        drawable.Acc = e.Reading;
+        var acc_data = e.Reading;
+        drawable.Prog.Update(acc_data.Acceleration.X, acc_data.Acceleration.Y);
     }
     public MainPage()
     {
